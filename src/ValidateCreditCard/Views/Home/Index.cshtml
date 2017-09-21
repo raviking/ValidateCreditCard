@@ -1,0 +1,108 @@
+﻿
+@{
+    ViewBag.Title = "Validate CreditCard";
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet prefetch" />
+<link rel='stylesheet prefetch' 
+      href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+<link href="~/Content/style.css" rel="stylesheet" />
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6 col-md-8">
+            <!-- CREDIT CARD FORM STARTS HERE -->
+            <div class="panel panel-default credit-card-box">
+                <div class="panel-heading display-table">
+                    <div class="row display-tr">
+                        <h3 class="panel-title display-td">Payment Details</h3>
+                        <div class="display-td">
+                            <img class="img-responsive pull-right" 
+                                 src="http://i76.imgup.net/accepted_c22e0.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <form role="form" id="payment-form">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="cardType">CARD TYPE</label>
+                                    <div class="input-group">
+                                        <select id="ddlCardType"
+                                                style="width:300px;"
+                                                required class="form-control">
+                                            <option value="VISA">VISA</option>
+                                            <option value="AMERICAN EXPRESS">AMERICAN EXPRESS</option>
+                                            <option value="MASTER CARD">MASTER CARD</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="cardNumber">CARD NUMBER</label>
+                                    <div class="input-group">
+                                        <input style="width:300px;" type="number"
+                                               class="form-control"
+                                               name="cardNumber" id="cardNumber"
+                                               placeholder="Valid Card Number"
+                                               autocomplete="cc-number"
+                                               maxlength="11"
+                                               min="0"
+                                               required autofocus />
+                                        @*<span class="input-group-addon">
+                                            <i class="fa fa-credit-card"></i>
+                                        </span><br/><br/>*@
+                                        <span id="spncardNumber" style="display:none;" class="payment-errors"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="cardExpiry">
+                                        <span class="hidden-xs">EXPIRATION DATE</span>
+                                    </label>
+                                    <input type="text"
+                                           class="form-control"
+                                           name="cardExpiry" id="cardExpiry"
+                                           placeholder="MM / YY"
+                                           autocomplete="cc-exp"
+                                           required />
+                                    <span id="spncardExpiry" style="display:none;" class="payment-errors"></span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="cardHolderName">
+                                        <span class="hidden-xs">CARD HOLDER NAME</span>
+                                    </label>
+                                    <input type="text"
+                                           class="form-control"
+                                           name="cardHolderName" id="cardHolderName"
+                                           placeholder="Ex:Mark Jukenberg"
+                                           required />
+                                    <span id="spncardHolderName" style="display:none;" class="payment-errors"></span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <button onclick="return ValidateCard();" 
+                                        class="btn btn-success btn-lg btn-block" 
+                                        type="submit">Click to Pay
+                                </button>
+                            </div>
+                            <div class="col-xs-12" style="display:none;">
+                                <p id="error-msg" class="payment-errors"></p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- CREDIT CARD FORM ENDS HERE -->
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/cardvalidate.js"></script>
+
+
